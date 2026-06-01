@@ -612,6 +612,33 @@
       color: #fff;
     }
 
+    /* ── Inline Copy (table) Button ───────────────────────── */
+    .copy-class-btn {
+      margin-left: 8px;
+      padding: 2px 8px;
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-family: var(--ease-font-mono, monospace);
+      background: rgba(108, 99, 255, 0.15);
+      color: #a78bfa;
+      transition: all 0.2s ease;
+      vertical-align: middle;
+    }
+
+    .copy-class-btn:hover {
+      background: rgba(108, 99, 255, 0.25);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .copy-class-btn.copied {
+      background: #22c55e;
+      color: white;
+      transform: scale(1.05);
+    }
+
     .docs-code-lang {
       transition: opacity var(--ease-speed-fast) var(--ease-ease);
     }
@@ -873,19 +900,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>--ease-speed-fast</code></td>
+        <td><code>--ease-speed-fast</code><button class="copy-class-btn">Copy</button></td>
         <td>150ms</td>
         <td>Hover effects and quick transitions</td>
         <td><code>--ease-speed-fast: 200ms;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-speed-medium</code></td>
+        <td><code>--ease-speed-medium</code><button class="copy-class-btn">Copy</button></td>
         <td>300ms</td>
         <td>Default animation timing</td>
         <td><code>--ease-speed-medium: 400ms;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-speed-slow</code></td>
+        <td><code>--ease-speed-slow</code><button class="copy-class-btn">Copy</button></td>
         <td>600ms</td>
         <td>Long entrance animations</td>
         <td><code>--ease-speed-slow: 800ms;</code></td>
@@ -907,19 +934,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>--ease-ease</code></td>
+        <td><code>--ease-ease</code><button class="copy-class-btn">Copy</button></td>
         <td>cubic-bezier(0.4,0,0.2,1)</td>
         <td>Default easing curve</td>
         <td><code>--ease-ease: ease;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-ease-out</code></td>
+        <td><code>--ease-ease-out</code><button class="copy-class-btn">Copy</button></td>
         <td>cubic-bezier(0,0,0.2,1)</td>
         <td>Exit and easing-out effects</td>
         <td><code>--ease-ease-out: ease-out;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-ease-bounce</code></td>
+        <td><code>--ease-ease-bounce</code><button class="copy-class-btn">Copy</button></td>
         <td>cubic-bezier(0.34,1.56,0.64,1)</td>
         <td>Bouncy animations</td>
         <td><code>--ease-ease-bounce: ease-in-out;</code></td>
@@ -941,73 +968,73 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>--ease-color-primary</code></td>
+        <td><code>--ease-color-primary</code><button class="copy-class-btn">Copy</button></td>
         <td>#6c63ff</td>
         <td>Primary brand color</td>
         <td><code>--ease-color-primary: #7c3aed;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-primary-light</code></td>
+        <td><code>--ease-color-primary-light</code><button class="copy-class-btn">Copy</button></td>
         <td>#a09af8</td>
         <td>Light primary shade</td>
         <td><code>--ease-color-primary-light: #c4b5fd;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-primary-dark</code></td>
+        <td><code>--ease-color-primary-dark</code><button class="copy-class-btn">Copy</button></td>
         <td>#4b44cc</td>
         <td>Dark primary shade</td>
         <td><code>--ease-color-primary-dark: #5b21b6;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-success</code></td>
+        <td><code>--ease-color-success</code><button class="copy-class-btn">Copy</button></td>
         <td>#22c55e</td>
         <td>Success states</td>
         <td><code>--ease-color-success: #16a34a;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-danger</code></td>
+        <td><code>--ease-color-danger</code><button class="copy-class-btn">Copy</button></td>
         <td>#ef4444</td>
         <td>Error states</td>
         <td><code>--ease-color-danger: #dc2626;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-warning</code></td>
+        <td><code>--ease-color-warning</code><button class="copy-class-btn">Copy</button></td>
         <td>#f59e0b</td>
         <td>Warning states</td>
         <td><code>--ease-color-warning: #d97706;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-bg</code></td>
+        <td><code>--ease-color-bg</code><button class="copy-class-btn">Copy</button></td>
         <td>var(--ease-color-neutral-50)</td>
         <td>Page background</td>
         <td><code>--ease-color-bg: #fafafa;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-surface</code></td>
+        <td><code>--ease-color-surface</code><button class="copy-class-btn">Copy</button></td>
         <td>#ffffff</td>
         <td>Cards and surfaces</td>
         <td><code>--ease-color-surface: #f8fafc;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-text</code></td>
+        <td><code>--ease-color-text</code><button class="copy-class-btn">Copy</button></td>
         <td>var(--ease-color-neutral-800)</td>
         <td>Main text color</td>
         <td><code>--ease-color-text: #111827;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-muted</code></td>
+        <td><code>--ease-color-muted</code><button class="copy-class-btn">Copy</button></td>
         <td>var(--ease-color-neutral-500)</td>
         <td>Secondary text</td>
         <td><code>--ease-color-muted: #6b7280;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-success-light</code></td>
+        <td><code>--ease-color-success-light</code><button class="copy-class-btn">Copy</button></td>
         <td>#4ade80</td>
         <td>Light success shade</td>
         <td><code>--ease-color-success-light: #65e894;</code></td>
       </tr>
       <tr>
-        <td><code>--ease-color-success-dark</code></td>
+        <td><code>--ease-color-success-dark</code><button class="copy-class-btn">Copy</button></td>
         <td>#16a34a</td>
         <td>Dark success shade</td>
         <td><code>--ease-color-success-dark: #15803d;</code></td>
@@ -1028,11 +1055,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td><code>--ease-space-1</code></td><td>0.25rem</td><td>4px spacing</td><td><code>--ease-space-1: 0.3rem;</code></td></tr>
-      <tr><td><code>--ease-space-2</code></td><td>0.5rem</td><td>8px spacing</td><td><code>--ease-space-2: 0.6rem;</code></td></tr>
-      <tr><td><code>--ease-space-4</code></td><td>1rem</td><td>16px spacing</td><td><code>--ease-space-4: 1.2rem;</code></td></tr>
-      <tr><td><code>--ease-space-8</code></td><td>2rem</td><td>32px spacing</td><td><code>--ease-space-8: 2.5rem;</code></td></tr>
-      <tr><td><code>--ease-space-16</code></td><td>4rem</td><td>64px spacing</td><td><code>--ease-space-16: 5rem;</code></td></tr>
+      <tr><td><code>--ease-space-1</code><button class="copy-class-btn">Copy</button></td><td>0.25rem</td><td>4px spacing</td><td><code>--ease-space-1: 0.3rem;</code></td></tr>
+      <tr><td><code>--ease-space-2</code><button class="copy-class-btn">Copy</button></td><td>0.5rem</td><td>8px spacing</td><td><code>--ease-space-2: 0.6rem;</code></td></tr>
+      <tr><td><code>--ease-space-4</code><button class="copy-class-btn">Copy</button></td><td>1rem</td><td>16px spacing</td><td><code>--ease-space-4: 1.2rem;</code></td></tr>
+      <tr><td><code>--ease-space-8</code><button class="copy-class-btn">Copy</button></td><td>2rem</td><td>32px spacing</td><td><code>--ease-space-8: 2.5rem;</code></td></tr>
+      <tr><td><code>--ease-space-16</code><button class="copy-class-btn">Copy</button></td><td>4rem</td><td>64px spacing</td><td><code>--ease-space-16: 5rem;</code></td></tr>
     </tbody>
   </table>
 
@@ -1049,10 +1076,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td><code>--ease-radius-sm</code></td><td>0.25rem</td><td>Small corners</td><td><code>--ease-radius-sm: 0.4rem;</code></td></tr>
-      <tr><td><code>--ease-radius-md</code></td><td>0.5rem</td><td>Default corners</td><td><code>--ease-radius-md: 0.75rem;</code></td></tr>
-      <tr><td><code>--ease-radius-lg</code></td><td>1rem</td><td>Large cards</td><td><code>--ease-radius-lg: 1.25rem;</code></td></tr>
-      <tr><td><code>--ease-radius-full</code></td><td>9999px</td><td>Pill elements</td><td><code>--ease-radius-full: 999px;</code></td></tr>
+      <tr><td><code>--ease-radius-sm</code><button class="copy-class-btn">Copy</button></td><td>0.25rem</td><td>Small corners</td><td><code>--ease-radius-sm: 0.4rem;</code></td></tr>
+      <tr><td><code>--ease-radius-md</code><button class="copy-class-btn">Copy</button></td><td>0.5rem</td><td>Default corners</td><td><code>--ease-radius-md: 0.75rem;</code></td></tr>
+      <tr><td><code>--ease-radius-lg</code><button class="copy-class-btn">Copy</button></td><td>1rem</td><td>Large cards</td><td><code>--ease-radius-lg: 1.25rem;</code></td></tr>
+      <tr><td><code>--ease-radius-full</code><button class="copy-class-btn">Copy</button></td><td>9999px</td><td>Pill elements</td><td><code>--ease-radius-full: 999px;</code></td></tr>
     </tbody>
   </table>
 
@@ -1069,10 +1096,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td><code>--ease-shadow-sm</code></td><td><code>0 1px 3px rgba(0, 0, 0, 0.1)</code></td><td>Subtle depth</td><td><code>--ease-shadow-sm: ...</code></td></tr>
-      <tr><td><code>--ease-shadow-md</code></td><td><code>0 4px 6px rgba(0, 0, 0, 0.1)</code></td><td>Cards & panels</td><td><code>--ease-shadow-md: ...</code></td></tr>
-      <tr><td><code>--ease-shadow-lg</code></td><td><code>0 10px 15px rgba(0, 0, 0, 0.1)</code></td><td>Elevated surfaces</td><td><code>--ease-shadow-lg: ...</code></td></tr>
-      <tr><td><code>--ease-glow-primary</code></td><td><code>0 0 10px rgba(124, 58, 237, 0.5)</code></td><td>Glow effects</td><td><code>--ease-glow-primary: ...</code></td></tr>
+      <tr><td><code>--ease-shadow-sm</code><button class="copy-class-btn">Copy</button></td><td><code>0 1px 3px rgba(0, 0, 0, 0.1)</code></td><td>Subtle depth</td><td><code>--ease-shadow-sm: ...</code></td></tr>
+      <tr><td><code>--ease-shadow-md</code><button class="copy-class-btn">Copy</button></td><td><code>0 4px 6px rgba(0, 0, 0, 0.1)</code></td><td>Cards & panels</td><td><code>--ease-shadow-md: ...</code></td></tr>
+      <tr><td><code>--ease-shadow-lg</code><button class="copy-class-btn">Copy</button></td><td><code>0 10px 15px rgba(0, 0, 0, 0.1)</code></td><td>Elevated surfaces</td><td><code>--ease-shadow-lg: ...</code></td></tr>
+      <tr><td><code>--ease-glow-primary</code><button class="copy-class-btn">Copy</button></td><td><code>0 0 10px rgba(124, 58, 237, 0.5)</code></td><td>Glow effects</td><td><code>--ease-glow-primary: ...</code></td></tr>
     </tbody>
   </table>
 
@@ -1089,12 +1116,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td><code>--ease-font-sans</code></td><td>Inter, system-ui</td><td>Primary font</td><td><code>--ease-font-sans: Arial, sans-serif;</code></td></tr>
-      <tr><td><code>--ease-font-mono</code></td><td>JetBrains Mono</td><td>Code font</td><td><code>--ease-font-mono: monospace;</code></td></tr>
-      <tr><td><code>--ease-text-sm</code></td><td>0.875rem</td><td>Small text size</td><td><code>--ease-text-sm: 0.9rem;</code></td></tr>
-      <tr><td><code>--ease-text-base</code></td><td>1rem</td><td>Base text size</td><td><code>--ease-text-base: 1.1rem;</code></td></tr>
-      <tr><td><code>--ease-text-xl</code></td><td>1.25rem</td><td>Large headings</td><td><code>--ease-text-xl: 1.4rem;</code></td></tr>
-      <tr><td><code>--ease-leading-normal</code></td><td>1.6</td><td>Default line height</td><td><code>--ease-leading-normal: 1.8;</code></td></tr>
+      <tr><td><code>--ease-font-sans</code><button class="copy-class-btn">Copy</button></td><td>Inter, system-ui</td><td>Primary font</td><td><code>--ease-font-sans: Arial, sans-serif;</code></td></tr>
+      <tr><td><code>--ease-font-mono</code><button class="copy-class-btn">Copy</button></td><td>JetBrains Mono</td><td>Code font</td><td><code>--ease-font-mono: monospace;</code></td></tr>
+      <tr><td><code>--ease-text-sm</code><button class="copy-class-btn">Copy</button></td><td>0.875rem</td><td>Small text size</td><td><code>--ease-text-sm: 0.9rem;</code></td></tr>
+      <tr><td><code>--ease-text-base</code><button class="copy-class-btn">Copy</button></td><td>1rem</td><td>Base text size</td><td><code>--ease-text-base: 1.1rem;</code></td></tr>
+      <tr><td><code>--ease-text-xl</code><button class="copy-class-btn">Copy</button></td><td>1.25rem</td><td>Large headings</td><td><code>--ease-text-xl: 1.4rem;</code></td></tr>
+      <tr><td><code>--ease-leading-normal</code><button class="copy-class-btn">Copy</button></td><td>1.6</td><td>Default line height</td><td><code>--ease-leading-normal: 1.8;</code></td></tr>
     </tbody>
   </table>
 
@@ -1111,11 +1138,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td><code>--ease-z-base</code></td><td>0</td><td>Default layer</td><td><code>--ease-z-base: 1;</code></td></tr>
-      <tr><td><code>--ease-z-raised</code></td><td>10</td><td>Raised elements</td><td><code>--ease-z-raised: 20;</code></td></tr>
-      <tr><td><code>--ease-z-overlay</code></td><td>100</td><td>Dropdowns & overlays</td><td><code>--ease-z-overlay: 200;</code></td></tr>
-      <tr><td><code>--ease-z-modal</code></td><td>1000</td><td>Modals</td><td><code>--ease-z-modal: 2000;</code></td></tr>
-      <tr><td><code>--ease-z-toast</code></td><td>9999</td><td>Toast notifications</td><td><code>--ease-z-toast: 10000;</code></td></tr>
+      <tr><td><code>--ease-z-base</code><button class="copy-class-btn">Copy</button></td><td>0</td><td>Default layer</td><td><code>--ease-z-base: 1;</code></td></tr>
+      <tr><td><code>--ease-z-raised</code><button class="copy-class-btn">Copy</button></td><td>10</td><td>Raised elements</td><td><code>--ease-z-raised: 20;</code></td></tr>
+      <tr><td><code>--ease-z-overlay</code><button class="copy-class-btn">Copy</button></td><td>100</td><td>Dropdowns & overlays</td><td><code>--ease-z-overlay: 200;</code></td></tr>
+      <tr><td><code>--ease-z-modal</code><button class="copy-class-btn">Copy</button></td><td>1000</td><td>Modals</td><td><code>--ease-z-modal: 2000;</code></td></tr>
+      <tr><td><code>--ease-z-toast</code><button class="copy-class-btn">Copy</button></td><td>9999</td><td>Toast notifications</td><td><code>--ease-z-toast: 10000;</code></td></tr>
     </tbody>
   </table>
   <h3 class="docs-h3">Custom Theme Example</h3>
@@ -1279,15 +1306,15 @@
         <table class="docs-table">
           <thead><tr><th>Class</th><th>Effect</th></tr></thead>
           <tbody>
-            <tr><td><code>ease-fade-in</code></td><td>Fades element from 0 → 1 opacity</td></tr>
-            <tr><td><code>ease-slide-up</code></td><td>Slides element up while fading in</td></tr>
-            <tr><td><code>ease-slide-down</code></td><td>Slides element down while fading in</td></tr>
-            <tr><td><code>ease-slide-left</code></td><td>Slides element left while fading in</td></tr>
-            <tr><td><code>ease-slide-right</code></td><td>Slides element right while fading in</td></tr>
-            <tr><td><code>ease-slide-in-left</code></td><td>Slides in from the left</td></tr>
-            <tr><td><code>ease-slide-in-right</code></td><td>Slides in from the right</td></tr>
-            <tr><td><code>ease-zoom-in</code></td><td>Scales from 85% with elastic ease</td></tr>
-            <tr><td><code>ease-flip</code></td><td>3D perspective flip from Y-axis</td></tr>
+            <tr><td><code>ease-fade-in</code><button class="copy-class-btn">Copy</button></td><td>Fades element from 0 → 1 opacity</td></tr>
+            <tr><td><code>ease-slide-up</code><button class="copy-class-btn">Copy</button></td><td>Slides element up while fading in</td></tr>
+            <tr><td><code>ease-slide-down</code><button class="copy-class-btn">Copy</button></td><td>Slides element down while fading in</td></tr>
+            <tr><td><code>ease-slide-left</code><button class="copy-class-btn">Copy</button></td><td>Slides element left while fading in</td></tr>
+            <tr><td><code>ease-slide-right</code><button class="copy-class-btn">Copy</button></td><td>Slides element right while fading in</td></tr>
+            <tr><td><code>ease-slide-in-left</code><button class="copy-class-btn">Copy</button></td><td>Slides in from the left</td></tr>
+            <tr><td><code>ease-slide-in-right</code><button class="copy-class-btn">Copy</button></td><td>Slides in from the right</td></tr>
+            <tr><td><code>ease-zoom-in</code><button class="copy-class-btn">Copy</button></td><td>Scales from 85% with elastic ease</td></tr>
+            <tr><td><code>ease-flip</code><button class="copy-class-btn">Copy</button></td><td>3D perspective flip from Y-axis</td></tr>
           </tbody>
         </table>
 
@@ -1295,11 +1322,11 @@
         <table class="docs-table">
           <thead><tr><th>Class</th><th>Effect</th></tr></thead>
           <tbody>
-            <tr><td><code>ease-bounce</code></td><td>Infinite vertical bounce</td></tr>
-            <tr><td><code>ease-rotate</code></td><td>Infinite 360° rotation</td></tr>
-            <tr><td><code>ease-pulse</code></td><td>Infinite opacity pulse</td></tr>
-            <tr><td><code>ease-ping</code></td><td>Expands and fades (ping effect)</td></tr>
-            <tr><td><code>ease-shake</code></td><td>Horizontal shake (one-shot)</td></tr>
+            <tr><td><code>ease-bounce</code><button class="copy-class-btn">Copy</button></td><td>Infinite vertical bounce</td></tr>
+            <tr><td><code>ease-rotate</code><button class="copy-class-btn">Copy</button></td><td>Infinite 360° rotation</td></tr>
+            <tr><td><code>ease-pulse</code><button class="copy-class-btn">Copy</button></td><td>Infinite opacity pulse</td></tr>
+            <tr><td><code>ease-ping</code><button class="copy-class-btn">Copy</button></td><td>Expands and fades (ping effect)</td></tr>
+            <tr><td><code>ease-shake</code><button class="copy-class-btn">Copy</button></td><td>Horizontal shake (one-shot)</td></tr>
           </tbody>
         </table>
 
@@ -1307,11 +1334,11 @@
         <table class="docs-table">
           <thead><tr><th>Class</th><th>Effect</th></tr></thead>
           <tbody>
-            <tr><td><code>ease-hover-grow</code></td><td>Scales up on hover (elastic)</td></tr>
-            <tr><td><code>ease-hover-shrink</code></td><td>Scales down on hover</td></tr>
-            <tr><td><code>ease-hover-glow</code></td><td>Adds primary color glow on hover</td></tr>
-            <tr><td><code>ease-hover-lift</code></td><td>Lifts element with deeper shadow on hover</td></tr>
-            <tr><td><code>ease-hover-underline</code></td><td>Animated underline from left on hover</td></tr>
+            <tr><td><code>ease-hover-grow</code><button class="copy-class-btn">Copy</button></td><td>Scales up on hover (elastic)</td></tr>
+            <tr><td><code>ease-hover-shrink</code><button class="copy-class-btn">Copy</button></td><td>Scales down on hover</td></tr>
+            <tr><td><code>ease-hover-glow</code><button class="copy-class-btn">Copy</button></td><td>Adds primary color glow on hover</td></tr>
+            <tr><td><code>ease-hover-lift</code><button class="copy-class-btn">Copy</button></td><td>Lifts element with deeper shadow on hover</td></tr>
+            <tr><td><code>ease-hover-underline</code><button class="copy-class-btn">Copy</button></td><td>Animated underline from left on hover</td></tr>
           </tbody>
         </table>
 
@@ -1768,6 +1795,43 @@ document.querySelectorAll('.docs-code').forEach(block => {
   });
   
   block.appendChild(btn);
+});
+
+// ── Inline Copy Button Handler ─────────────────────────
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
+    return true;
+  } catch (err) {
+    console.error("Copy failed:", err);
+    return false;
+  }
+}
+
+document.querySelectorAll(".copy-class-btn").forEach(button => {
+  button.addEventListener("click", async () => {
+    const code = button.parentElement.querySelector("code");
+    if (!code) return;
+    const text = code.textContent.trim();
+    const success = await copyToClipboard(text);
+    if (!success) return;
+    const originalText = button.textContent;
+    button.textContent = "✓ Copied!";
+    button.classList.add("copied");
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.classList.remove("copied");
+    }, 2000);
+  });
 });
 </script>
 </body>
