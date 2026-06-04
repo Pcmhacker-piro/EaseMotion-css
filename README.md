@@ -24,6 +24,27 @@ Write UI like you describe it in English. No build steps. No memorizing shorthan
 
 <br/>
 
+## 📑 Table of Contents
+
+- [Support the Project](#support-the-project)
+- [Project Statistics](#project-statistics)
+- [Browser Compatibility](#browser-compatibility)
+- [What is EaseMotion CSS?](#what-is-easemotion-css)
+- [Why EaseMotion CSS?](#why-easemotion-css)
+- [Quick Start](#quick-start)
+- [Philosophy](#philosophy)
+- [Usage & Examples](#usage--examples)
+- [Customization](#customization)
+- [FAQ](#faq)
+- [File Structure](#file-structure)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Community](#community)
+- [Contributors](#contributors)
+- [Maintainer](#maintainer)
+- [Changelog](#changelog)
+- [License](#license)
+
 ---
 
 ### 🚀 Quick Start
@@ -98,18 +119,21 @@ Most people simply forget. This is your reminder. 😊
 
 ## 🌐 Browser Compatibility
 
-EaseMotion CSS is built for modern evergreen browsers. The table below reflects the key CSS features used across the framework, demo pages, and component examples.
+EaseMotion CSS is built for modern evergreen browsers and relies on CSS3 custom properties, CSS animations, Flexbox, CSS Grid, transforms, transitions, and keyframe animations.
 
 <div align="center">
 
-| Browser | `backdrop-filter` | `aspect-ratio` | CSS variables | Animations |
-|---------|-------------------|----------------|---------------|------------|
-| Chrome  | Supported | Supported | Supported | Supported |
-| Firefox | Supported | Supported | Supported | Supported |
-| Safari  | Supported with `-webkit-backdrop-filter` fallback | Supported | Supported | Supported |
-| Edge    | Supported | Supported | Supported | Supported |
+| Browser | Minimum Version | `backdrop-filter` | `aspect-ratio` | CSS variables | Animations | Notes |
+|---------|-----------------|-------------------|----------------|---------------|------------|-------|
+| Chrome  | 49+ | Supported | Supported | Supported | Supported | |
+| Firefox | 31+ | Supported | Supported | Supported | Supported | |
+| Safari  | 9.1+ | Supported with `-webkit-backdrop-filter` fallback | Supported | Supported | Supported | Supported | |
+| Edge    | 15+ | Supported | Supported | Supported | Supported | |
+| Opera   | 36+ | Supported | Supported | Supported | Supported | |
 
 </div>
+
+> Internet Explorer (IE 11 and earlier) is not supported.
 
 ---
 
@@ -247,23 +271,6 @@ Or in CSS / PostCSS / Sass:
 
 > ⚠️ **`easemotion/variables.css` must always load before modular animation files.** It provides the shared custom properties used by all animation categories.
 
----
-
-## 🌐 Browser Compatibility
-
-EaseMotion CSS is compatible with all modern browsers that support CSS3 animations and custom properties.
-
-| Browser | Minimum Version | Status |
-|---------|-----------------|--------|
-| Chrome  | 49+ | ✅ Fully Supported |
-| Firefox | 31+ | ✅ Fully Supported |
-| Safari  | 9.1+ | ✅ Fully Supported |
-| Edge    | 15+ | ✅ Fully Supported |
-| Opera   | 36+ | ✅ Fully Supported |
-
-**Note:** EaseMotion CSS relies on CSS3 custom properties (`--var`) and CSS animations. Older browsers (IE 11 and below) are not supported.
-
----
 
 ## 🧠 Philosophy
 
@@ -403,6 +410,24 @@ Applies a quick squish animation during hover, focus, and active interactions.
 <div class="ease-grid ease-grid-cols-3 ease-place-end ease-gap-4">End</div>
 ```
 
+### Align Self Utilities
+
+```html
+<div class="ease-flex">
+  <div class="ease-self-start">Start</div>
+  <div class="ease-self-center">Center</div>
+  <div class="ease-self-end">End</div>
+  <div class="ease-self-stretch">Stretch</div>
+</div>
+```
+
+#### Available Classes
+
+- `.ease-self-start` → `align-self: flex-start`
+- `.ease-self-center` → `align-self: center`
+- `.ease-self-end` → `align-self: flex-end`
+- `.ease-self-stretch` → `align-self: stretch`
+
 ### Hover Animation Examples
 
 Common hover-triggered animation examples are available for:
@@ -459,6 +484,39 @@ Example showcase:
 
 <!-- Accent border -->
 <div class="ease-card ease-card-accent">Highlighted card</div>
+```
+
+### Navigation
+
+```html
+<nav class="ease-navbar-glass" aria-label="Primary navigation">
+  <div class="ease-navbar-brand">EaseMotion</div>
+  <div class="ease-navbar-menu">
+    <a class="ease-navbar-item" href="#">Home</a>
+    <a class="ease-navbar-item" href="#">Features</a>
+    <a class="ease-navbar-item" href="#">Contact</a>
+  </div>
+</nav>
+```
+
+```html
+<nav class="ease-navbar-glass ease-navbar-glass-sticky" aria-label="Sticky navigation">
+  <div class="ease-navbar-brand">Sticky Nav</div>
+  <div class="ease-navbar-menu">
+    <a class="ease-navbar-item" href="#">Overview</a>
+    <a class="ease-navbar-item" href="#">Docs</a>
+  </div>
+</nav>
+```
+
+```html
+<nav class="ease-navbar-glass ease-navbar-glass-blur" aria-label="Blurred navbar">
+  <div class="ease-navbar-brand">Deep Blur</div>
+  <div class="ease-navbar-menu">
+    <a class="ease-navbar-item" href="#">Product</a>
+    <a class="ease-navbar-item" href="#">Support</a>
+  </div>
+</nav>
 ```
 
 ### Build a Hero Section in 5 Lines
@@ -536,18 +594,6 @@ Open or claim an issue first for non-trivial ideas, then add your raw demo insid
 Yes. That is one of the core goals of EaseMotion CSS. You can use the CDN link or local CSS files directly without configuring a bundler, compiler, or build pipeline.
 
 ---
-## 🌐 Browser Compatibility
-
-EaseMotion CSS is designed to work with modern evergreen browsers and relies on widely supported CSS features such as CSS Variables, Flexbox, CSS Grid, Transforms, Transitions, and Keyframe Animations.
-
-| Browser | Supported Versions |
-|----------|-------------------|
-| Chrome | Latest stable version |
-| Firefox | Latest stable version |
-| Safari | Latest stable version |
-| Edge | Latest stable version |
-
-> Internet Explorer (IE 11 and earlier) is not supported.
 ## 📂 File Structure
 
 ```
