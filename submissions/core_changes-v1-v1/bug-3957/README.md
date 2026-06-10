@@ -1,6 +1,8 @@
-# Fix #3957: Fix #3957: ease-loader-ping hardcoded cubic-bezier
+# EaseMotion CSS Fix
 
-The `.ease-loader-ping` class hardcodes `cubic-bezier(0, 0, 0.2, 1)` for the animation timing function instead of referencing the `--ease-ease-out` design token declared in `core/variables.css`.
-```css
-.ease-loader-ping { animation: ease-kf-ping 1s var(--ease-ease-out) infinite; }
-```
+See related PR for the proposed fix.
+
+## Files
+- `demo.html` — interactive demo
+- `style.css` — CSS fix
+- `README.md` — this file
