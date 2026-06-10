@@ -1,0 +1,22 @@
+/* Fix #3896: replacements for core/animations.css to fix ease-float, ease-ping, ease-rotate */
+
+/* --- ease-float --- */
+/* Original: hardcoded animation-duration: 3s */
+/* Fixed:   animation-duration: var(--ease-slow) */
+.ease-float {
+  animation-duration: var(--ease-slow);
+}
+
+/* --- ease-ping --- */
+/* Original: hardcoded animation-timing: cubic-bezier(0, 0, 0.2, 1) */
+/* Fixed:   animation-timing: var(--ease-in-out) */
+.ease-ping {
+  animation-timing: var(--ease-in-out);
+}
+
+/* --- ease-rotate --- */
+/* Original: hardcoded animation-timing: linear */
+/* Fixed:   animation-timing: var(--ease-linear) */
+.ease-rotate {
+  animation-timing: var(--ease-linear);
+}
