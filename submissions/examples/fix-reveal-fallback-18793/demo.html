@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reveal.js IntersectionObserver fallback fix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>reveal.js scroll fallback fix</h1>
+<p class="sub">
+  Issue <a href="https://github.com/SAPTARSHI-coder/EaseMotion-css/issues/18793">#18793</a> —
+  <code>core/reveal.js</code> applies <code>activeClass</code> instantly to all
+  elements when <code>IntersectionObserver</code> is absent. A throttled scroll/resize
+  listener restores the reveal effect as graceful degradation.
+</p>
+
+<div class="columns">
+  <div class="col">
+    <h2 class="col-head col-head-bad">broken (current fallback)</h2>
+    <p class="col-desc">All elements get the active class immediately — no scroll animation.</p>
+    <div class="reveal-group" id="brokenGroup">
+      <div class="reveal-item broken">item 1</div>
+      <div class="reveal-item broken">item 2</div>
+      <div class="reveal-item broken">item 3</div>
+      <div class="reveal-item broken">item 4</div>
+    </div>
+  </div>
+  <div class="col">
+    <h2 class="col-head col-head-good">fixed (throttled scroll listener)</h2>
+    <p class="col-desc">Elements only get the active class when they scroll into view.</p>
+    <div class="reveal-group" id="fixedGroup">
+      <div class="reveal-item fixed">item 1</div>
+      <div class="reveal-item fixed">item 2</div>
+      <div class="reveal-item fixed">item 3</div>
+      <div class="reveal-item fixed">item 4</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>how it works</h2>
+  <p>The proposed change to <code>core/reveal.js</code> replaces the current fallback block (lines 62–75) with a throttled scroll/resize listener that calls the existing <code>isCentered()</code> function:</p>
+  <pre>// proposed fallback (replaces lines 62-75):
+var ticking = false;
+var onScroll = function () {
+  if (!ticking) {
+    requestAnimationFrame(function () {
+      var els = document.querySelectorAll('.' + revealClass);
+      Array.prototype.forEach.call(els, function (el) {
+        if (isCentered(el)) {
+          el.classList.add(activeClass);
+        }
+      });
+      ticking = false;
+    });
+    ticking = true;
+  }
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll, { passive: true });
+onScroll(); // initial check</pre>
+</div>
+
+<div class="section">
+  <h2>key benefits</h2>
+  <ul>
+    <li>uses the same <code>isCentered()</code> logic already in the file</li>
+    <li>throttled via <code>requestAnimationFrame</code> — no performance cost</li>
+    <li><code>{ passive: true }</code> — doesn't block scrolling</li>
+    <li>resize listener re-evaluates after layout changes</li>
+    <li>no external dependencies or polyfills</li>
+  </ul>
+</div>
+
+<div class="spacer">scroll down to see more fixed items&hellip;</div>
+
+<div class="section">
+  <h2>more fixed items (scroll-triggered)</h2>
+  <div class="reveal-group" id="moreFixedGroup">
+    <div class="reveal-item fixed">extra item 1</div>
+    <div class="reveal-item fixed">extra item 2</div>
+    <div class="reveal-item fixed">extra item 3</div>
+    <div class="reveal-item fixed">extra item 4</div>
+    <div class="reveal-item fixed">extra item 5</div>
+    <div class="reveal-item fixed">extra item 6</div>
+  </div>
+</div>
+
+<div class="spacer">end of demo</div>
+
+</div>
+
+<script>
+// === simulate "broken" fallback (all items immediately active) ===
+;(function () {
+  var els = document.querySelectorAll('#brokenGroup .reveal-item');
+  Array.prototype.forEach.call(els, function (el) {
+    el.classList.add('active');
+  });
+})();
+
+// === simulate "fixed" throttled scroll listener fallback ===
+;(function () {
+  var FIXED_SELECTOR = '#fixedGroup .reveal-item, #moreFixedGroup .reveal-item';
+
+  function isCentered(el) {
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight;
+    return rect.top < vh * 0.85 && rect.bottom > 0;
+  }
+
+  var ticking = false;
+  var checkVisible = function () {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        var els = document.querySelectorAll(FIXED_SELECTOR);
+        Array.prototype.forEach.call(els, function (el) {
+          if (isCentered(el)) {
+            el.classList.add('active');
+          }
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  window.addEventListener('scroll', checkVisible, { passive: true });
+  window.addEventListener('resize', checkVisible, { passive: true });
+  checkVisible(); // initial check
+})();
+</script>
+
+</body>
+</html>
