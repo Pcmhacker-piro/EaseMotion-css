@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>modal focus stack fix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>modal focus stack fix</h1>
+<p class="sub">
+  Issue <a href="https://github.com/SAPTARSHI-coder/EaseMotion-css/issues/18792">#18792</a> —
+  <code>core/modal.js</code> uses a single <code>previousFocusedElement</code> variable
+  that gets overwritten when a second modal opens from inside the first.
+</p>
+
+<div class="columns">
+  <div class="col">
+    <h2 class="col-head col-head-bad">broken (single variable)</h2>
+    <p class="col-desc">Focus returns to the wrong element — or nowhere at all.</p>
+    <button class="btn btn-danger" onclick="brokenOpen1()">Open Modal 1</button>
+    <p id="brokenStatus" class="status">focus target: —</p>
+  </div>
+  <div class="col">
+    <h2 class="col-head col-head-good">fixed (focus stack)</h2>
+    <p class="col-desc">Focus correctly returns to the original trigger button.</p>
+    <button class="btn btn-primary" onclick="fixedOpen1()">Open Modal 1</button>
+    <p id="fixedStatus" class="status">focus target: —</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>proposed change to <code>core/modal.js</code></h2>
+  <pre>// replace line 4:
+let previousFocusedElement = null;
+// with:
+let focusStack = [];
+
+// replace lines 22 & 29:
+previousFocusedElement = document.activeElement;
+// with:
+focusStack.push(document.activeElement);
+
+// replace lines 45-51:
+if (previousFocusedElement && ...) {
+  previousFocusedElement.focus();
+  previousFocusedElement = null;
+}
+// with:
+if (focusStack.length > 0) {
+  var prev = focusStack.pop();
+  if (prev && typeof prev.focus === 'function') {
+    prev.focus();
+  }
+}</pre>
+</div>
+
+<div class="section">
+  <h2>key benefits</h2>
+  <ul>
+    <li>handles arbitrarily deep nesting of modals</li>
+    <li>fully backward-compatible — same behavior for single modals</li>
+    <li>stack is garbage-collected as modals close</li>
+    <li>no external dependencies</li>
+  </ul>
+</div>
+
+</div>
+
+<!-- Broken modals -->
+<div class="overlay" id="brokenOverlay1">
+  <div class="modal">
+    <h3>Broken Modal 1</h3>
+    <p>Click the link below to open a second modal.</p>
+    <button class="btn btn-danger" onclick="brokenOpen2()">Open Modal 2</button>
+    <br><br>
+    <button class="btn btn-secondary" onclick="brokenClose()">Close</button>
+  </div>
+</div>
+<div class="overlay" id="brokenOverlay2">
+  <div class="modal">
+    <h3>Broken Modal 2</h3>
+    <p>Closing this should return focus to the original trigger button — but it won't.</p>
+    <button class="btn btn-secondary" onclick="brokenClose()">Close</button>
+  </div>
+</div>
+
+<!-- Fixed modals -->
+<div class="overlay" id="fixedOverlay1">
+  <div class="modal">
+    <h3>Fixed Modal 1</h3>
+    <p>Click the link below to open a second modal.</p>
+    <button class="btn btn-primary" onclick="fixedOpen2()">Open Modal 2</button>
+    <br><br>
+    <button class="btn btn-secondary" onclick="fixedClose()">Close</button>
+  </div>
+</div>
+<div class="overlay" id="fixedOverlay2">
+  <div class="modal">
+    <h3>Fixed Modal 2</h3>
+    <p>Closing this returns focus to the original trigger button correctly.</p>
+    <button class="btn btn-secondary" onclick="fixedClose()">Close</button>
+  </div>
+</div>
+
+<script>
+// === "broken" implementation (single variable, current buggy behavior) ===
+var brokenPrev = null;
+
+function brokenUpdateStatus() {
+  document.getElementById('brokenStatus').textContent = 'focus target: ' + (brokenPrev ? 'button #' + (brokenPrev.dataset ? brokenPrev.dataset.id : '?') : 'null');
+}
+
+function brokenOpen1() {
+  brokenPrev = document.activeElement;
+  document.getElementById('brokenOverlay1').classList.add('is-active');
+  document.getElementById('brokenOverlay1').querySelector('.modal').focus();
+  brokenUpdateStatus();
+}
+
+function brokenOpen2() {
+  brokenPrev = document.activeElement;
+  document.getElementById('brokenOverlay2').classList.add('is-active');
+  document.getElementById('brokenOverlay2').querySelector('.modal').focus();
+  brokenUpdateStatus();
+}
+
+function brokenClose() {
+  document.getElementById('brokenOverlay1').classList.remove('is-active');
+  document.getElementById('brokenOverlay2').classList.remove('is-active');
+  if (brokenPrev && typeof brokenPrev.focus === 'function') {
+    brokenPrev.focus();
+  }
+  brokenPrev = null;
+  brokenUpdateStatus();
+}
+
+// === "fixed" implementation (focus stack) ===
+var focusStack = [];
+
+function fixedUpdateStatus() {
+  var top = focusStack.length > 0 ? focusStack[focusStack.length - 1] : null;
+  document.getElementById('fixedStatus').textContent = 'focus target: ' + (top ? 'button #' + (top.dataset ? top.dataset.id : '?') : 'null');
+}
+
+function fixedOpen1() {
+  focusStack.push(document.activeElement);
+  document.getElementById('fixedOverlay1').classList.add('is-active');
+  document.getElementById('fixedOverlay1').querySelector('.modal').focus();
+  fixedUpdateStatus();
+}
+
+function fixedOpen2() {
+  focusStack.push(document.activeElement);
+  document.getElementById('fixedOverlay2').classList.add('is-active');
+  document.getElementById('fixedOverlay2').querySelector('.modal').focus();
+  fixedUpdateStatus();
+}
+
+function fixedClose() {
+  document.getElementById('fixedOverlay1').classList.remove('is-active');
+  document.getElementById('fixedOverlay2').classList.remove('is-active');
+  if (focusStack.length > 0) {
+    var prev = focusStack.pop();
+    if (prev && typeof prev.focus === 'function') {
+      prev.focus();
+    }
+  }
+  fixedUpdateStatus();
+}
+
+// initial status
+brokenUpdateStatus();
+fixedUpdateStatus();
+</script>
+
+</body>
+</html>
