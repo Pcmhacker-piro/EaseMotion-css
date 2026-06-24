@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated AI Model Training Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <header class="dashboard-header">
+      <div class="brain-icon">🧠</div>
+      <h1>AI Training Dashboard</h1>
+      <p>Monitor model training, accuracy metrics, and experiment runs</p>
+    </header>
+
+    <div class="grid-metrics">
+      <div class="metric-card">
+        <div class="metric-label">Accuracy (val)</div>
+        <div class="metric-value">94.2%</div>
+        <div class="metric-sub">+2.1% from last epoch</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Loss (val)</div>
+        <div class="metric-value">0.312</div>
+        <div class="metric-sub">-0.048 from last epoch</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Epoch</div>
+        <div class="metric-value">24 / 50</div>
+        <div class="metric-sub">48% complete</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Learning Rate</div>
+        <div class="metric-value">3e-4</div>
+        <div class="metric-sub">cosine schedule</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Batch Size</div>
+        <div class="metric-value">64</div>
+        <div class="metric-sub">32 steps/epoch</div>
+      </div>
+    </div>
+
+    <div class="layout-grid">
+      <div class="panel">
+        <div class="panel-title">📈 Training Progress</div>
+        <div class="training-progress">
+          <div class="training-row">
+            <div class="training-header">
+              <span class="training-name">Training Accuracy</span>
+              <span class="training-value">96.8%</span>
+            </div>
+            <div class="training-bar-bg">
+              <div class="training-bar-fill purple" style="animation-delay:0.1s;width:96.8%"></div>
+            </div>
+          </div>
+          <div class="training-row">
+            <div class="training-header">
+              <span class="training-name">Validation Accuracy</span>
+              <span class="training-value">94.2%</span>
+            </div>
+            <div class="training-bar-bg">
+              <div class="training-bar-fill green" style="animation-delay:0.2s;width:94.2%"></div>
+            </div>
+          </div>
+          <div class="training-row">
+            <div class="training-header">
+              <span class="training-name">Training Loss</span>
+              <span class="training-value">0.184</span>
+            </div>
+            <div class="training-bar-bg">
+              <div class="training-bar-fill blue" style="animation-delay:0.3s;width:92%"></div>
+            </div>
+          </div>
+          <div class="training-row">
+            <div class="training-header">
+              <span class="training-name">Validation Loss</span>
+              <span class="training-value">0.312</span>
+            </div>
+            <div class="training-bar-bg">
+              <div class="training-bar-fill orange" style="animation-delay:0.4s;width:78%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">🔬 Experiment Runs</div>
+        <div class="experiment-list">
+          <div class="experiment-row">
+            <div class="experiment-icon completed">✓</div>
+            <div class="experiment-info">
+              <div class="experiment-name">resnet50-v3-baseline</div>
+              <div class="experiment-meta">Acc: 91.2% · Loss: 0.421 · 2h 14m</div>
+            </div>
+            <div class="experiment-badge">
+              <span class="status-tag completed">Completed</span>
+            </div>
+          </div>
+          <div class="experiment-row">
+            <div class="experiment-icon running">▶</div>
+            <div class="experiment-info">
+              <div class="experiment-name">resnet50-v4-augmented</div>
+              <div class="experiment-meta">Acc: 94.2% · Loss: 0.312 · Epoch 24/50</div>
+            </div>
+            <div class="experiment-badge">
+              <span class="status-tag running">Running</span>
+            </div>
+          </div>
+          <div class="experiment-row">
+            <div class="experiment-icon failed">✕</div>
+            <div class="experiment-info">
+              <div class="experiment-name">efficientnet-b2-transfer</div>
+              <div class="experiment-meta">Acc: 87.5% · Loss: 0.534 · diverged at epoch 12</div>
+            </div>
+            <div class="experiment-badge">
+              <span class="status-tag failed">Failed</span>
+            </div>
+          </div>
+          <div class="experiment-row">
+            <div class="experiment-icon completed">✓</div>
+            <div class="experiment-info">
+              <div class="experiment-name">vit-small-pretrained</div>
+              <div class="experiment-meta">Acc: 93.8% · Loss: 0.356 · 3h 42m</div>
+            </div>
+            <div class="experiment-badge">
+              <span class="status-tag completed">Completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel full-width" style="animation-delay:1.2s">
+      <div class="panel-title">🖥️ Resource Utilization</div>
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="gauge-ring">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle class="bg" cx="40" cy="40" r="33" />
+              <circle class="fill purple" cx="40" cy="40" r="33" style="stroke-dashoffset:41" />
+            </svg>
+            <div class="center-label">80%</div>
+          </div>
+          <div class="label">GPU Util</div>
+          <div class="sub">NVIDIA A100</div>
+        </div>
+        <div class="resource-item">
+          <div class="gauge-ring">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle class="bg" cx="40" cy="40" r="33" />
+              <circle class="fill blue" cx="40" cy="40" r="33" style="stroke-dashoffset:62" />
+            </svg>
+            <div class="center-label">70%</div>
+          </div>
+          <div class="label">VRAM</div>
+          <div class="sub">32 GB used</div>
+        </div>
+        <div class="resource-item">
+          <div class="gauge-ring">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle class="bg" cx="40" cy="40" r="33" />
+              <circle class="fill green" cx="40" cy="40" r="33" style="stroke-dashoffset:103" />
+            </svg>
+            <div class="center-label">50%</div>
+          </div>
+          <div class="label">CPU</div>
+          <div class="sub">16 cores</div>
+        </div>
+        <div class="resource-item">
+          <div class="gauge-ring">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle class="bg" cx="40" cy="40" r="33" />
+              <circle class="fill orange" cx="40" cy="40" r="33" style="stroke-dashoffset:31" />
+            </svg>
+            <div class="center-label">85%</div>
+          </div>
+          <div class="label">RAM</div>
+          <div class="sub">28 GB of 32 GB</div>
+        </div>
+        <div class="resource-item">
+          <div class="value" style="font-size:1.8rem;color:#a78bfa">45.2</div>
+          <div class="label">Dataset Size</div>
+          <div class="sub">GB · 124K samples</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
