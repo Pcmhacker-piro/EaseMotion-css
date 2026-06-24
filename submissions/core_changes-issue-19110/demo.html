@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Startup Launch Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <header class="dashboard-header">
+      <div class="rocket-icon">🚀</div>
+      <h1>Launch Dashboard</h1>
+      <p>Track your startup growth, milestones, and launch readiness</p>
+    </header>
+
+    <div class="grid-overview">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Users</div>
+        <div class="kpi-value">
+          18,450
+          <span class="kpi-trend up">+12.5%</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Funding Raised</div>
+        <div class="kpi-value">
+          $2.8M
+          <span class="kpi-trend up">+8.3%</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Active Campaigns</div>
+        <div class="kpi-value">
+          12
+          <span class="kpi-trend up">+3</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Launch Readiness</div>
+        <div class="kpi-value">
+          84%
+          <span class="kpi-trend down">+6%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-grid">
+      <div class="panel">
+        <div class="panel-title">📊 Feature Readiness</div>
+        <div class="progress-track">
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">User Authentication</span>
+              <span class="progress-pct">100%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill blue" style="animation-delay:0.1s;width:100%"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">Payment Gateway</span>
+              <span class="progress-pct">90%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill green" style="animation-delay:0.2s;width:90%"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">Dashboard Analytics</span>
+              <span class="progress-pct">75%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill orange" style="animation-delay:0.3s;width:75%"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">Mobile App</span>
+              <span class="progress-pct">60%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill purple" style="animation-delay:0.4s;width:60%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">🎯 Launch Milestones</div>
+        <div class="milestone-timeline">
+          <div class="milestone-item">
+            <div class="milestone-dot done">✓</div>
+            <div class="milestone-content">
+              <div class="milestone-title">MVP Completed <span class="status-badge live">Live</span></div>
+              <div class="milestone-desc">Core product features delivered</div>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-dot done">✓</div>
+            <div class="milestone-content">
+              <div class="milestone-title">Seed Funding <span class="status-badge live">Closed</span></div>
+              <div class="milestone-desc">$1.5M seed round secured</div>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-dot active">●</div>
+            <div class="milestone-content">
+              <div class="milestone-title">Beta Launch <span class="status-badge beta">In Progress</span></div>
+              <div class="milestone-desc">Invite-only beta with 5K users</div>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-dot pending">○</div>
+            <div class="milestone-content">
+              <div class="milestone-title">Public Launch <span class="status-badge dev">Q3 2026</span></div>
+              <div class="milestone-desc">Full public availability</div>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-dot pending">○</div>
+            <div class="milestone-content">
+              <div class="milestone-title">Series A <span class="status-badge dev">Target</span></div>
+              <div class="milestone-desc">$10M growth funding round</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="animation-delay:1.2s">
+      <div class="panel-title">💰 Funding Progress</div>
+      <div class="funding-ring-container">
+        <svg width="0" height="0">
+          <defs>
+            <linearGradient id="fundingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#818cf8" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="funding-ring">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle class="bg-circle" cx="70" cy="70" r="60" />
+            <circle class="progress-circle" cx="70" cy="70" r="60" style="animation-delay:1.5s" />
+          </svg>
+          <div class="center-text">
+            <div class="amount">$2.8M</div>
+            <div class="label">of $5M goal</div>
+          </div>
+        </div>
+        <div class="funding-details">
+          <div class="funding-row">
+            <span class="label">Seed Round</span>
+            <span class="value">$1.5M</span>
+          </div>
+          <div class="funding-row">
+            <span class="label">Angel Investors</span>
+            <span class="value">$800K</span>
+          </div>
+          <div class="funding-row">
+            <span class="label">Grants</span>
+            <span class="value">$500K</span>
+          </div>
+          <div class="funding-row">
+            <span class="label">Total Raised</span>
+            <span class="value">$2.8M (56%)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
